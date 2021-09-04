@@ -1,6 +1,0 @@
-framework module Pods_viperAnimacaoTests {
-  umbrella header "Pods-viperAnimacaoTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
