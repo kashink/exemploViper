@@ -26,6 +26,8 @@
 		5FBC8DF426E3FA4D0023D2E1 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC8DF326E3FA4D0023D2E1 /* ApiClient.swift */; };
 		5FBC8DF626E3FC200023D2E1 /* AppApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC8DF526E3FC200023D2E1 /* AppApiClient.swift */; };
 		5FBC8DFA26E3FCDB0023D2E1 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC8DF926E3FCDB0023D2E1 /* HomeService.swift */; };
+		5FE4048726E42EA200623431 /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE4048526E42EA200623431 /* TabCell.swift */; };
+		5FE4048826E42EA200623431 /* TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FE4048626E42EA200623431 /* TabCell.xib */; };
 		8160C4569CAD91B7B7D99A1A /* Pods_viperAnimacao.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADFC76B97668F9186FAEE017 /* Pods_viperAnimacao.framework */; };
 		D2C1CEDB616262156D882F92 /* Pods_viperAnimacaoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01F0849A8528F3084539697F /* Pods_viperAnimacaoTests.framework */; };
 		D432CFBDE99CC3A97A9C5E28 /* Pods_viperAnimacao_viperAnimacaoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DC9FE2604A1E210536E5AE9 /* Pods_viperAnimacao_viperAnimacaoUITests.framework */; };
@@ -80,6 +82,8 @@
 		5FBC8DF326E3FA4D0023D2E1 /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		5FBC8DF526E3FC200023D2E1 /* AppApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppApiClient.swift; sourceTree = "<group>"; };
 		5FBC8DF926E3FCDB0023D2E1 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
+		5FE4048526E42EA200623431 /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
+		5FE4048626E42EA200623431 /* TabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabCell.xib; sourceTree = "<group>"; };
 		6DC9FE2604A1E210536E5AE9 /* Pods_viperAnimacao_viperAnimacaoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_viperAnimacao_viperAnimacaoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1C0E8BE9247EE3468D317E /* Pods-viperAnimacao-viperAnimacaoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-viperAnimacao-viperAnimacaoUITests.debug.xcconfig"; path = "Target Support Files/Pods-viperAnimacao-viperAnimacaoUITests/Pods-viperAnimacao-viperAnimacaoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		ADFC76B97668F9186FAEE017 /* Pods_viperAnimacao.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_viperAnimacao.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +214,7 @@
 		5FBC8DE926E3F2E10023D2E1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5FE4048426E42E5300623431 /* Cells */,
 				5FBC8DDA26E3ECDF0023D2E1 /* HomeViewController.swift */,
 				5FBC8DDB26E3ECDF0023D2E1 /* HomeViewController.xib */,
 			);
@@ -224,6 +229,15 @@
 				5FBC8DF526E3FC200023D2E1 /* AppApiClient.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		5FE4048426E42E5300623431 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5FE4048526E42EA200623431 /* TabCell.swift */,
+				5FE4048626E42EA200623431 /* TabCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		702E3E30A5511A950BDECC81 /* Pods */ = {
@@ -360,6 +374,7 @@
 				5FBC8DB426E3EBD90023D2E1 /* LaunchScreen.storyboard in Resources */,
 				5FBC8DB126E3EBD90023D2E1 /* Assets.xcassets in Resources */,
 				5FBC8DDD26E3ECDF0023D2E1 /* HomeViewController.xib in Resources */,
+				5FE4048826E42EA200623431 /* TabCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +504,7 @@
 			files = (
 				5FBC8DFA26E3FCDB0023D2E1 /* HomeService.swift in Sources */,
 				5FBC8DE226E3F0890023D2E1 /* Viewable.swift in Sources */,
+				5FE4048726E42EA200623431 /* TabCell.swift in Sources */,
 				5FBC8DE626E3F13D0023D2E1 /* Routable.swift in Sources */,
 				5FBC8DA826E3EBD80023D2E1 /* AppDelegate.swift in Sources */,
 				5FBC8DF226E3F9A60023D2E1 /* AppConstants.swift in Sources */,

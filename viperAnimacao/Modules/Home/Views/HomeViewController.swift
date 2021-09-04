@@ -11,6 +11,7 @@ import RxCocoa
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var collectionView: UICollectionView!
     var presenter: HomePresenterInterface!
     private let disposeBag = DisposeBag()
     
@@ -29,6 +30,11 @@ class HomeViewController: UIViewController {
     }
     
     func setup() {
+        collectionView.register(UINib(nibName: "TabCell", bundle: Bundle(for: TabCell.self)), forCellWithReuseIdentifier: "TabCell")
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
         presenter.outputs.isLoading
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { _ in
@@ -37,8 +43,8 @@ class HomeViewController: UIViewController {
         
         presenter.outputs.homeData
             .observe(on: MainScheduler.asyncInstance)
-            .subscribe(onNext: { _ in
-//                self?.tableView.reloadData()
+            .subscribe(onNext: { [weak self] _ in
+                self?.collectionView.reloadData()
             }).disposed(by: disposeBag)
         
         presenter.outputs.error
@@ -52,3 +58,35 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: Viewable {}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.presenter.outputs.homeData.value.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TabCell", for: indexPath) as? TabCell else { return UICollectionViewCell() }
+        
+        cell.setup(text: self.presenter.outputs.homeData.value[indexPath.row])
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let fakeLabel: UILabel = UILabel()
+        fakeLabel.font = UIFont(name: "System", size: 17)
+        fakeLabel.text = self.presenter.outputs.homeData.value[indexPath.row]
+        return CGSize(width: fakeLabel.intrinsicContentSize.width + 24, height: 76)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.init(top: TabCell.topPadding, left: TabCell.leftPadding, bottom: TabCell.bottomPadding, right: TabCell.rightPadding)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+    }
+
+}
