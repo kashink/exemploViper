@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="viperAnimacao" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Toz-Pa-cZp" id="GES-LH-b8n"/>
+                <outlet property="tableView" destination="hwW-4B-XRO" id="hi9-I1-Mui"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -32,11 +33,19 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hwW-4B-XRO">
+                    <rect key="frame" x="0.0" y="156" width="414" height="706"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="hwW-4B-XRO" firstAttribute="top" secondItem="Toz-Pa-cZp" secondAttribute="bottom" id="8s9-LB-dLh"/>
                 <constraint firstItem="Toz-Pa-cZp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="12" id="FOh-XU-Qzq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hwW-4B-XRO" secondAttribute="bottom" id="T2M-a0-9bF"/>
+                <constraint firstItem="hwW-4B-XRO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Tlg-C4-EdL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hwW-4B-XRO" secondAttribute="trailing" id="a5b-VO-5ub"/>
                 <constraint firstItem="Toz-Pa-cZp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cuf-hy-4JR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Toz-Pa-cZp" secondAttribute="trailing" id="wHu-bo-OdZ"/>
             </constraints>

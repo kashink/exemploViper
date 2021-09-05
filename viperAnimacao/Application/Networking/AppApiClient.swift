@@ -12,13 +12,13 @@ import RxCocoa
 public class AppApiClient: ApiClient {
     
     // MARK: Fetch Home Data
-    func fetchHomeData(completion: @escaping (ApiResult<[String]>) -> Void) {
+    func fetchHomeData(completion: @escaping (ApiResult<HomeFeedEntity>) -> Void) {
 
         self.request(useRetrier: true, ApiRouter.fetchHomeData) { (profile) in
             switch profile {
             case let .success(data):
                 do {
-                    let data = try JSONDecoder().decode([String].self, from: data)
+                    let data = try JSONDecoder().decode(HomeFeedEntity.self, from: data)
                     completion(.success(data))
                 } catch let error {
                     print(error)

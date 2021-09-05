@@ -22,7 +22,7 @@ protocol HomePresenterInputs {
 protocol HomePresenterOutputs {
     var isLoading: BehaviorRelay<Bool> { get }
     var error: BehaviorRelay<ApiError?> { get }
-    var homeData: BehaviorRelay<[String]> { get }
+    var homeData: BehaviorRelay<HomeFeedEntity?> { get }
     var selectedTab: BehaviorRelay<IndexPath?> { get }
 }
 
@@ -43,7 +43,7 @@ final class HomePresenter: HomePresenterInterface, HomePresenterInputs, HomePres
     // Outputs
     let isLoading: BehaviorRelay<Bool>
     var error: BehaviorRelay<ApiError?>
-    let homeData: BehaviorRelay<[String]>
+    let homeData: BehaviorRelay<HomeFeedEntity?>
     var selectedTab: BehaviorRelay<IndexPath?>
 
     private let dependencies: HomePresenterDependencies

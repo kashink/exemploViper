@@ -12,7 +12,7 @@ import RxSwift
 protocol HomeInteractorOutputs {
     var isLoading: PublishSubject<Bool> { get }
     var error: BehaviorRelay<ApiError?> { get }
-    var homeData: BehaviorRelay<[String]> { get }
+    var homeData: BehaviorRelay<HomeFeedEntity> { get }
     var selectedTab: BehaviorRelay<IndexPath?> { get }
 }
 
@@ -27,7 +27,7 @@ final class HomeInteractor {
     // Outputs
     let isLoading = BehaviorRelay<Bool>(value: false)
     let error = BehaviorRelay<ApiError?>(value: nil)
-    let homeData = BehaviorRelay<[String]>(value: [])
+    let homeData = BehaviorRelay<HomeFeedEntity?>(value: nil)
     let selectedTab = BehaviorRelay<IndexPath?>(value: nil)
     
     let homeService: HomeService = HomeService()

@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F02BA3026E53DC700130BD9 /* HomeViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02BA2F26E53DC700130BD9 /* HomeViewController+CollectionView.swift */; };
+		5F02BA3326E53E0600130BD9 /* HomeViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02BA3226E53E0600130BD9 /* HomeViewController+TableView.swift */; };
+		5F02BA3726E5417200130BD9 /* HomeFeedEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02BA3626E5417200130BD9 /* HomeFeedEntity.swift */; };
+		5F02BA3A26E5432200130BD9 /* DiskListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02BA3826E5432200130BD9 /* DiskListCell.swift */; };
+		5F02BA3B26E5432200130BD9 /* DiskListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F02BA3926E5432200130BD9 /* DiskListCell.xib */; };
+		5F02BA3E26E5483500130BD9 /* DiskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F02BA3C26E5483500130BD9 /* DiskCell.swift */; };
+		5F02BA3F26E5483500130BD9 /* DiskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F02BA3D26E5483500130BD9 /* DiskCell.xib */; };
 		5FBC8DA826E3EBD80023D2E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FBC8DA726E3EBD80023D2E1 /* AppDelegate.swift */; };
 		5FBC8DB126E3EBD90023D2E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FBC8DB026E3EBD90023D2E1 /* Assets.xcassets */; };
 		5FBC8DB426E3EBD90023D2E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FBC8DB226E3EBD90023D2E1 /* LaunchScreen.storyboard */; };
@@ -57,6 +64,13 @@
 		1C4F9476DF6792F3AE57FF91 /* Pods-viperAnimacao-viperAnimacaoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-viperAnimacao-viperAnimacaoUITests.release.xcconfig"; path = "Target Support Files/Pods-viperAnimacao-viperAnimacaoUITests/Pods-viperAnimacao-viperAnimacaoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		25C47F5370E73A5BA46CB92D /* Pods-viperAnimacaoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-viperAnimacaoTests.debug.xcconfig"; path = "Target Support Files/Pods-viperAnimacaoTests/Pods-viperAnimacaoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3FF3E07E99048336731384FD /* Pods-viperAnimacao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-viperAnimacao.debug.xcconfig"; path = "Target Support Files/Pods-viperAnimacao/Pods-viperAnimacao.debug.xcconfig"; sourceTree = "<group>"; };
+		5F02BA2F26E53DC700130BD9 /* HomeViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+CollectionView.swift"; sourceTree = "<group>"; };
+		5F02BA3226E53E0600130BD9 /* HomeViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+TableView.swift"; sourceTree = "<group>"; };
+		5F02BA3626E5417200130BD9 /* HomeFeedEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedEntity.swift; sourceTree = "<group>"; };
+		5F02BA3826E5432200130BD9 /* DiskListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskListCell.swift; sourceTree = "<group>"; };
+		5F02BA3926E5432200130BD9 /* DiskListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiskListCell.xib; sourceTree = "<group>"; };
+		5F02BA3C26E5483500130BD9 /* DiskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCell.swift; sourceTree = "<group>"; };
+		5F02BA3D26E5483500130BD9 /* DiskCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiskCell.xib; sourceTree = "<group>"; };
 		5FBC8DA426E3EBD80023D2E1 /* viperAnimacao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = viperAnimacao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FBC8DA726E3EBD80023D2E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5FBC8DB026E3EBD90023D2E1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -117,6 +131,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F02BA2E26E53D9B00130BD9 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				5FE4048426E42E5300623431 /* Cells */,
+				5F02BA2F26E53DC700130BD9 /* HomeViewController+CollectionView.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		5F02BA3126E53DE900130BD9 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				5F02BA3426E53E4F00130BD9 /* Cells */,
+				5F02BA3226E53E0600130BD9 /* HomeViewController+TableView.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		5F02BA3426E53E4F00130BD9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5F02BA3826E5432200130BD9 /* DiskListCell.swift */,
+				5F02BA3926E5432200130BD9 /* DiskListCell.xib */,
+				5F02BA3C26E5483500130BD9 /* DiskCell.swift */,
+				5F02BA3D26E5483500130BD9 /* DiskCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		5F02BA3526E5415600130BD9 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				5F02BA3626E5417200130BD9 /* HomeFeedEntity.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
 		5FBC8D9B26E3EBD80023D2E1 = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +244,7 @@
 		5FBC8DD926E3ECBB0023D2E1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				5F02BA3526E5415600130BD9 /* Entities */,
 				5FBC8DE926E3F2E10023D2E1 /* Views */,
 				5FBC8DDE26E3F00B0023D2E1 /* HomeRouter.swift */,
 				5FBC8DEA26E3F3020023D2E1 /* HomeInteractor.swift */,
@@ -214,7 +266,8 @@
 		5FBC8DE926E3F2E10023D2E1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5FE4048426E42E5300623431 /* Cells */,
+				5F02BA3126E53DE900130BD9 /* TableView */,
+				5F02BA2E26E53D9B00130BD9 /* CollectionView */,
 				5FBC8DDA26E3ECDF0023D2E1 /* HomeViewController.swift */,
 				5FBC8DDB26E3ECDF0023D2E1 /* HomeViewController.xib */,
 			);
@@ -371,9 +424,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5F02BA3F26E5483500130BD9 /* DiskCell.xib in Resources */,
 				5FBC8DB426E3EBD90023D2E1 /* LaunchScreen.storyboard in Resources */,
 				5FBC8DB126E3EBD90023D2E1 /* Assets.xcassets in Resources */,
 				5FBC8DDD26E3ECDF0023D2E1 /* HomeViewController.xib in Resources */,
+				5F02BA3B26E5432200130BD9 /* DiskListCell.xib in Resources */,
 				5FE4048826E42EA200623431 /* TabCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,16 +560,21 @@
 				5FBC8DFA26E3FCDB0023D2E1 /* HomeService.swift in Sources */,
 				5FBC8DE226E3F0890023D2E1 /* Viewable.swift in Sources */,
 				5FE4048726E42EA200623431 /* TabCell.swift in Sources */,
+				5F02BA3326E53E0600130BD9 /* HomeViewController+TableView.swift in Sources */,
 				5FBC8DE626E3F13D0023D2E1 /* Routable.swift in Sources */,
 				5FBC8DA826E3EBD80023D2E1 /* AppDelegate.swift in Sources */,
 				5FBC8DF226E3F9A60023D2E1 /* AppConstants.swift in Sources */,
 				5FBC8DEB26E3F3020023D2E1 /* HomeInteractor.swift in Sources */,
 				5FBC8DF626E3FC200023D2E1 /* AppApiClient.swift in Sources */,
+				5F02BA3726E5417200130BD9 /* HomeFeedEntity.swift in Sources */,
 				5FBC8DDF26E3F00B0023D2E1 /* HomeRouter.swift in Sources */,
 				5FBC8DE826E3F15F0023D2E1 /* AppRouter.swift in Sources */,
 				5FBC8DED26E3F30C0023D2E1 /* HomePresenter.swift in Sources */,
 				5FBC8DF026E3F9770023D2E1 /* ApiRouter.swift in Sources */,
+				5F02BA3026E53DC700130BD9 /* HomeViewController+CollectionView.swift in Sources */,
 				5FBC8DDC26E3ECDF0023D2E1 /* HomeViewController.swift in Sources */,
+				5F02BA3E26E5483500130BD9 /* DiskCell.swift in Sources */,
+				5F02BA3A26E5432200130BD9 /* DiskListCell.swift in Sources */,
 				5FBC8DE426E3F0C50023D2E1 /* AppNavigationController.swift in Sources */,
 				5FBC8DF426E3FA4D0023D2E1 /* ApiClient.swift in Sources */,
 			);

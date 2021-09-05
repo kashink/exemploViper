@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 class HomeService {
-    public typealias DataHome = ApiResult<[String]>
+    public typealias DataHome = ApiResult<HomeFeedEntity>
 
     init() {}
     
