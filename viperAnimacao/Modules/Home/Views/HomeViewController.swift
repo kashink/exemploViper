@@ -55,9 +55,9 @@ class HomeViewController: UIViewController {
             .observe(on: MainScheduler.asyncInstance)
             .subscribe(onNext: { [weak self] selectedTab in
                 self?.collectionView.reloadData()
-                self?.collectionView.performBatchUpdates(nil, completion: {
-                    (result) in
+                self?.collectionView.performBatchUpdates(nil, completion: { _ in
                     if let indexPath = selectedTab, let frame = self?.collectionView.layoutAttributesForItem(at:indexPath)?.frame {
+                        self?.collectionView.scrollToItem(at:indexPath, at: .centeredHorizontally, animated: true)
                         let animationDuration = self?.selectedTabView.frame.height == 0 ? 0.0 : 0.5
                         UIView.animate(withDuration: animationDuration, animations: {
                             self?.selectedTabView.frame = CGRect(x: frame.minX + 12, y: frame.maxY, width: frame.width - 24, height: 1)
