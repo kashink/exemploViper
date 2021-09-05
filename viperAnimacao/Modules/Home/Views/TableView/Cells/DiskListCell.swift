@@ -11,6 +11,7 @@ class DiskListCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var diskList: [HomeFeedDiskEntity] = []
+    var selectedDisk: IndexPath? = nil
     
     static var leftPadding = CGFloat(12)
     static var rightPadding = CGFloat(12)
@@ -41,7 +42,10 @@ extension DiskListCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiskCell", for: indexPath) as? DiskCell else { return UICollectionViewCell() }
         
-        cell.setup(urlString: self.diskList[indexPath.row].imageUrl)
+        cell.setup(
+            image: self.diskList[indexPath.row].downloadedImage ?? UIImage(),
+            selected: indexPath == self.selectedDisk
+        )
         
         return cell
     }
@@ -56,5 +60,8 @@ extension DiskListCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        self.collectionView.scrollToItem(at:indexPath, at: .centeredHorizontally, animated: true)
+        self.selectedDisk = indexPath
+        self.collectionView.reloadData()
     }
 }

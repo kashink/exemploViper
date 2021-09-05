@@ -5,11 +5,12 @@
 //  Created by fleury on 05/09/21.
 //
 
+import UIKit
 import Foundation
 
 public struct HomeFeedEntity: Equatable, Decodable {
     public let tabList: [String]
-    public let diskList: [HomeFeedDiskEntity]
+    public var diskList: [HomeFeedDiskEntity]
     
     public init(tabList: [String], diskList: [HomeFeedDiskEntity]) {
         self.tabList = tabList
@@ -20,9 +21,22 @@ public struct HomeFeedEntity: Equatable, Decodable {
 public struct HomeFeedDiskEntity: Equatable, Decodable {
     public let name: String
     public let imageUrl: String
+    public var downloadedImage: UIImage?
     
-    public init(name: String, imageUrl: String) {
+    public init(name: String, imageUrl: String, downloadedImage: UIImage?) {
         self.name = name
         self.imageUrl = imageUrl
+        self.downloadedImage = downloadedImage
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case name, imageUrl
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        imageUrl = try container.decode(String.self, forKey: .imageUrl)
+        self.downloadedImage = nil
     }
 }

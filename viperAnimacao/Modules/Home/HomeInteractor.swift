@@ -52,11 +52,37 @@ final class HomeInteractor {
                 switch result {
                 case let .success(data):
                     self.error.accept(nil)
-                    self.homeData.accept(data)
+                    
+                    var imageCount = data.diskList.count
+                    
+                    var dataWithImages = data
+                    dataWithImages.diskList = []
+                    data.diskList.forEach { disk in
+                        if let url = URL(string: disk.imageUrl) {
+                            self.downloadFromUrl(from: url) { data, _, error in
+                                guard let data = data, error == nil else { return }
+                                DispatchQueue.main.async { [unowned self] in
+                                    var newDisk = disk
+                                    newDisk.downloadedImage = UIImage(data: data)
+                                    dataWithImages.diskList.append(newDisk)
+                                    
+                                    imageCount -= 1
+                                    
+                                    if imageCount == 0 {
+                                        self.homeData.accept(dataWithImages)
+                                    }
+                                }
+                            }
+                        }
+                    }
                 case .failure:
                     self.error.accept(ApiError.generic(codeError: 0))
                 }
                 self.isLoading.accept(false)
             }).disposed(by: disposeBag)
+    }
+    
+    func downloadFromUrl(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 }

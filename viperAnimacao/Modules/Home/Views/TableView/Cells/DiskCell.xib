@@ -42,6 +42,7 @@
                 <constraint firstAttribute="trailing" secondItem="Nqm-gv-Rsk" secondAttribute="trailing" id="vvj-Hj-jbM"/>
             </constraints>
             <connections>
+                <outlet property="bgView" destination="Nqm-gv-Rsk" id="3o7-uP-5LS"/>
                 <outlet property="diskImage" destination="gLZ-Rt-FUc" id="rjV-Ms-m4b"/>
             </connections>
             <point key="canvasLocation" x="84.057971014492765" y="67.633928571428569"/>
