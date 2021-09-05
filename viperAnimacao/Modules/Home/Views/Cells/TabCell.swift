@@ -17,11 +17,16 @@ class TabCell: UICollectionViewCell {
     static var topPadding = CGFloat(0.0)
     static var bottomPadding = CGFloat(0.0)
     
+    static var unselectedTextFont = UIFont.systemFont(ofSize: 16, weight: .regular)
+    static var selectedTextFont = UIFont.systemFont(ofSize: 18, weight: .bold)
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
-    func setup(text: String) {
+    func setup(text: String, selected: Bool) {
         textLabel.text = text
+        
+        textLabel.font = selected ? TabCell.selectedTextFont : TabCell.unselectedTextFont
     }
 }

@@ -13,10 +13,12 @@ protocol HomeInteractorOutputs {
     var isLoading: PublishSubject<Bool> { get }
     var error: BehaviorRelay<ApiError?> { get }
     var homeData: BehaviorRelay<[String]> { get }
+    var selectedTab: BehaviorRelay<IndexPath?> { get }
 }
 
 protocol HomeInteractorInputs {
     func viewDidLoad()
+    func selectedTab(indexPath: IndexPath)
 }
 
 final class HomeInteractor {
@@ -26,6 +28,7 @@ final class HomeInteractor {
     let isLoading = BehaviorRelay<Bool>(value: false)
     let error = BehaviorRelay<ApiError?>(value: nil)
     let homeData = BehaviorRelay<[String]>(value: [])
+    let selectedTab = BehaviorRelay<IndexPath?>(value: nil)
     
     let homeService: HomeService = HomeService()
     
@@ -33,6 +36,10 @@ final class HomeInteractor {
     
     func viewDidLoad() {
         fetchHomeData()
+    }
+    
+    func selectedTab(indexPath: IndexPath) {
+        selectedTab.accept(indexPath)
     }
     
     // MARK: Fetch Home Data

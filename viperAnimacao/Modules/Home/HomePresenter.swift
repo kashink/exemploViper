@@ -16,12 +16,14 @@ typealias HomePresenterDependencies = (
 
 protocol HomePresenterInputs {
     var viewDidLoadTrigger: PublishSubject<Void> { get }
+    var tabSelectedTrigger: PublishSubject<IndexPath> { get }
 }
 
 protocol HomePresenterOutputs {
     var isLoading: BehaviorRelay<Bool> { get }
     var error: BehaviorRelay<ApiError?> { get }
     var homeData: BehaviorRelay<[String]> { get }
+    var selectedTab: BehaviorRelay<IndexPath?> { get }
 }
 
 protocol HomePresenterInterface {
@@ -36,11 +38,13 @@ final class HomePresenter: HomePresenterInterface, HomePresenterInputs, HomePres
     
     // Inputs
     let viewDidLoadTrigger = PublishSubject<Void>()
+    let tabSelectedTrigger = PublishSubject<IndexPath>()
 
     // Outputs
     let isLoading: BehaviorRelay<Bool>
     var error: BehaviorRelay<ApiError?>
     let homeData: BehaviorRelay<[String]>
+    var selectedTab: BehaviorRelay<IndexPath?>
 
     private let dependencies: HomePresenterDependencies
     private let disposeBag = DisposeBag()
@@ -52,11 +56,18 @@ final class HomePresenter: HomePresenterInterface, HomePresenterInputs, HomePres
         self.isLoading = dependencies.interactor.isLoading
         self.error = dependencies.interactor.error
         self.homeData = dependencies.interactor.homeData
+        self.selectedTab = dependencies.interactor.selectedTab
         
         viewDidLoadTrigger
             .asObservable()
             .subscribe(onNext: { [weak self] _ in
                 self?.viewDidLoad()
+            }).disposed(by: disposeBag)
+        
+        tabSelectedTrigger
+            .asObservable()
+            .subscribe(onNext: { [weak self] tabSelected in
+                self?.dependencies.interactor.selectedTab(indexPath: tabSelected)
             }).disposed(by: disposeBag)
     }
     
