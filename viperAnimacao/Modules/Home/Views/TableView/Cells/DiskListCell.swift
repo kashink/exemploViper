@@ -11,12 +11,15 @@ class DiskListCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var diskList: [HomeFeedDiskEntity] = []
-    var selectedDisk: IndexPath? = nil
+    var selectedDisk: IndexPath = IndexPath(row: 0, section: 0)
+    var previousSelectedDisk: IndexPath = IndexPath(row: 0, section: 0)
     
-    static var leftPadding = CGFloat(12)
-    static var rightPadding = CGFloat(12)
+    static var leftPadding = CGFloat(0.0)
+    static var rightPadding = CGFloat(0.0)
     static var topPadding = CGFloat(0.0)
     static var bottomPadding = CGFloat(0.0)
+    
+    static var unselectedOffset = CGFloat(-50.0)
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,27 +38,46 @@ class DiskListCell: UITableViewCell {
 
 extension DiskListCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return self.diskList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiskCell", for: indexPath) as? DiskCell else { return UICollectionViewCell() }
         
         cell.setup(
-            image: self.diskList[indexPath.row].downloadedImage ?? UIImage(),
-            selected: indexPath == self.selectedDisk
+            image: self.diskList[indexPath.section].downloadedImage ?? UIImage(),
+            selectedDisk: self.selectedDisk,
+            previousSelectedDisk: self.previousSelectedDisk,
+            indexPath: indexPath
         )
+        
+        if indexPath.section == (self.diskList.count - 1) {
+            self.previousSelectedDisk = self.selectedDisk
+        }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 176, height: 176)
+        return CGSize(width: 200, height: 200)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.init(top: DiskListCell.topPadding, left: DiskListCell.leftPadding, bottom: DiskListCell.bottomPadding, right: DiskListCell.rightPadding)
+        switch section {
+        case self.selectedDisk.section:
+            return UIEdgeInsets.init(top: DiskListCell.topPadding, left: DiskListCell.leftPadding, bottom: DiskListCell.bottomPadding, right: DiskListCell.rightPadding)
+        case self.selectedDisk.section - 1:
+            return UIEdgeInsets.init(top: DiskListCell.topPadding, left: DiskListCell.unselectedOffset, bottom: DiskListCell.bottomPadding, right: DiskListCell.rightPadding)
+        case self.selectedDisk.section + 1:
+            return UIEdgeInsets.init(top: DiskListCell.topPadding, left: DiskListCell.leftPadding, bottom: DiskListCell.bottomPadding, right: DiskListCell.unselectedOffset)
+        default:
+            return UIEdgeInsets.init(top: DiskListCell.topPadding, left: DiskListCell.unselectedOffset, bottom: DiskListCell.bottomPadding, right: DiskListCell.unselectedOffset)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
