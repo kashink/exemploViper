@@ -11,6 +11,11 @@ class DiskCell: UICollectionViewCell {
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var diskImage: UIImageView!
     
+    @IBOutlet weak var imageLeftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageTopConstraint: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -33,17 +38,27 @@ class DiskCell: UICollectionViewCell {
     
     func rotateView(view:UIView, selected: Bool, duration: Double, direction: Int) {
         UIView.animate(withDuration: duration, animations: {
+            var constant: CGFloat = 0
             var transform: CATransform3D = CATransform3DMakeRotation(0, 0, 0, 0)
             
             transform.m34 = -1 / 500
             if selected {
                 transform = CATransform3DRotate(transform, 0, 1, 1, 1)
             } else {
+                constant = 15
                 let angle = direction < 0 ? 45 : -45
                 transform = CATransform3DRotate(transform, CGFloat(angle), 0, 1, 0)
             }
             
             view.layer.transform = transform
+            self.setImageConstraints(constant: constant)
         })
+    }
+    
+    func setImageConstraints(constant: CGFloat) {
+        self.imageLeftConstraint.constant = constant
+        self.imageRightConstraint.constant = constant
+        self.imageBottomConstraint.constant = constant
+        self.imageTopConstraint.constant = constant
     }
 }

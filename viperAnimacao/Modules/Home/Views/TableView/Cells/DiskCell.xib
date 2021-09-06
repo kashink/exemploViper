@@ -44,6 +44,10 @@
             <connections>
                 <outlet property="bgView" destination="Nqm-gv-Rsk" id="3o7-uP-5LS"/>
                 <outlet property="diskImage" destination="gLZ-Rt-FUc" id="rjV-Ms-m4b"/>
+                <outlet property="imageBottomConstraint" destination="HxE-bW-S2Z" id="pnL-Yg-93M"/>
+                <outlet property="imageLeftConstraint" destination="5RM-1h-uXK" id="enM-ib-5JN"/>
+                <outlet property="imageRightConstraint" destination="Gmn-5z-u0C" id="Zw4-L0-bse"/>
+                <outlet property="imageTopConstraint" destination="r6s-GT-Zoo" id="Jh3-AU-9Iv"/>
             </connections>
             <point key="canvasLocation" x="84.057971014492765" y="67.633928571428569"/>
         </collectionViewCell>

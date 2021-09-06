@@ -56,10 +56,6 @@ extension DiskListCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
             indexPath: indexPath
         )
         
-        if indexPath.section == (self.diskList.count - 1) {
-            self.previousSelectedDisk = self.selectedDisk
-        }
-        
         return cell
     }
     
@@ -85,5 +81,8 @@ extension DiskListCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLa
         self.collectionView.scrollToItem(at:indexPath, at: .centeredHorizontally, animated: true)
         self.selectedDisk = indexPath
         self.collectionView.reloadData()
+        self.collectionView.performBatchUpdates(nil, completion: { _ in
+            self.previousSelectedDisk = self.selectedDisk
+        })
     }
 }
